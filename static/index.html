@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navapur Local Guide - Kiro AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Navapur Local Guide</h1>
+            <p class="subtitle">Powered by Kiro AI + product.md context</p>
+        </div>
+        
+        <div class="form-section">
+            <div class="input-group">
+                <div class="form-field">
+                    <label for="category">What do you need?</label>
+                    <select id="category">
+                        <option>Street Food Recommendation</option>
+                        <option>Morning Breakfast Spots</option>
+                        <option>Budget Meals</option>
+                        <option>Late Night Food</option>
+                    </select>
+                </div>
+                
+                <div class="form-field">
+                    <label for="question">Your Question</label>
+                    <input type="text" id="question" placeholder="e.g., 'Suggest spicy evening snacks under ₹30'">
+                </div>
+                
+                <button onclick="askKiro()">Ask Local Guide</button>
+            </div>
+        </div>
+        
+        <div id="response" class="response hidden">
+            <div class="response-header">
+                <h3>🎯 Kiro's Recommendation:</h3>
+                <button onclick="clearResponse()" class="close-btn">✕</button>
+            </div>
+            <div class="response-content" id="responseContent"></div>
+        </div>
+        
+        <div class="info-section">
+            <h3>📍 Local Stalls in Navapur</h3>
+            <ul>
+                <li><strong>Anna Saheb Chai Tapri</strong> (Bus Stand) - Chai ₹5!</li>
+                <li><strong>Ramesh Misal Pav</strong> (Main Bazaar) - Spicy misal!</li>
+                <li><strong>Suresh Bhaiya's Poha</strong> (Station Road) - Fresh poha!</li>
+                <li><strong>Pinky Dabeli Stall</strong> (Girls School) - Evening snack!</li>
+                <li><strong>Raju Bhai Sandwich</strong> (Bus Stand) - Night time!</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
