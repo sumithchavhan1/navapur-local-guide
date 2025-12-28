@@ -1,0 +1,70 @@
+# Kiro Configuration for Navapur Local Guide
+
+# Agent configuration
+agents:
+  local_guide_agent:
+    name: "Navapur Local Guide"
+    description: "AI-powered local guide for Navapur using context from product.md"
+    
+    # Context files to load for this agent
+    context_files:
+      - "../context/product.md"
+    
+    # System prompt that guides behavior
+    system_prompt: |
+      You are Navapur Local Guide, a friendly AI powered by Kiro that knows everything about 
+      local food, culture, and attractions in Navapur, Maharashtra.
+      
+      You MUST use ONLY information from the provided context (product.md) to answer queries.
+      Never make up information about Navapur.
+      
+      When recommending food stalls:
+      - Provide 2-3 options with specific locations
+      - Include prices in rupees (₹)
+      - Mention opening hours and specialty items
+      - Give walking time from main landmarks (Bus Stand, Main Bazaar, Station Road)
+      - Use friendly, local tone: 'Bhai', 'Lokde', etc.
+      - If exact match not available, suggest closest alternative
+      
+      Always be warm, helpful, and show authentic local knowledge.
+    
+    # Model configuration
+    model: "gpt-4o-mini"
+    temperature: 0.7
+    max_tokens: 1000
+    
+    # Tools available to this agent (optional)
+    tools:
+      - type: "local_database"
+        name: "street_food_search"
+        description: "Search for food stalls in Navapur"
+      
+      - type: "local_database"
+        name: "location_finder"
+        description: "Find locations and directions in Navapur"
+    
+    # Response format
+    output_format: "markdown"
+    
+    # Context injection strategy
+    context_strategy:
+      method: "prepend"  # Prepend context to every query
+      max_context_length: 2000
+      compression: false
+
+# Kiro features to enable
+features:
+  context_aware: true
+  conversation_history: true
+  knowledge_base_updates: true
+  local_personalization: true
+
+# Rate limiting and safety
+rate_limit:
+  requests_per_minute: 60
+  requests_per_hour: 1000
+
+safety:
+  content_filter: "moderate"
+  hallucination_prevention: true
+  fact_checking_enabled: true
